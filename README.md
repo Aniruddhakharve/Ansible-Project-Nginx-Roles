@@ -99,6 +99,23 @@ webserver/files/index.html
 
 ---
 
+## 📦 Role Directory Breakdown
+
+Each folder inside the `webserver/` role has a specific purpose:
+
+| Directory      | Purpose                                                                 |
+|----------------|-------------------------------------------------------------------------|
+| `tasks/`       | Contains the main list of tasks to be executed (e.g., installing nginx). |
+| `handlers/`    | Defines actions (like restarting services) triggered by `notify`.       |
+| `files/`       | Stores static files (like `index.html`) to be copied to target machines. |
+| `vars/`        | Holds role-specific variables used in tasks (e.g., web root path).       |
+| `defaults/`    | Contains default variables that can be overridden by the user.           |
+| `meta/`        | Defines metadata about the role (e.g., dependencies, author info).       |
+
+> 💡 These folders follow the [Ansible Galaxy role structure](https://docs.ansible.com/ansible/latest/dev_guide/collections_galaxy_meta.html), which helps in making roles reusable, organized, and shareable.
+
+---
+
 ✅ Output Example
 After running the playbook, visit:
 ```bash
