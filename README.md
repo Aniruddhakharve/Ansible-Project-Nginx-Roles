@@ -1,112 +1,116 @@
-# 🌐 Ansible Role: Nginx Web Server Setup
+🌐 Ansible Role: Nginx Web Server Setup
+This project showcases an Ansible Galaxy-style role to install, configure, and manage Nginx on a remote Linux server. It uses best practices such as handlers, variables, and modular role-based structure — perfect for learning and demonstrating real-world Ansible automation.
 
-This project showcases an Ansible Galaxy-style role to **install, configure, and manage Nginx** on a remote Linux server. It uses best practices such as handlers, variables, and modular role-based structure — perfect for learning and demonstrating real-world Ansible automation.
-
----
-
-## 📁 Project Structure
-
+📁 Project Structure
 ansible-nginx-role/
 ├── inventory.ini
 ├── site.yml
 └── webserver/
-├── tasks/
-│ └── main.yml
-├── handlers/
-│ └── main.yml
-├── files/
-│ └── index.html
-├── vars/
-│ └── main.yml
-├── defaults/
-│ └── main.yml
-└── meta/
-└── main.yml
+  ├── tasks/
+  │  └── main.yml
+  ├── handlers/
+  │  └── main.yml
+  ├── files/
+  │  └── index.html
+  ├── vars/
+  │  └── main.yml
+  ├── defaults/
+  │  └── main.yml
+  └── meta/
+    └── main.yml
 
----
+🚀 What It Does
+Installs Nginx
 
-## 🚀 What It Does
+Deploys a custom index.html web page
 
-- Installs **Nginx**
-- Deploys a **custom index.html** web page
-- Starts and **enables Nginx service**
-- Uses **handlers** to restart Nginx on file changes
-- Uses **variables** for flexibility and clean code
+Starts and enables Nginx service
 
----
+Uses handlers to restart Nginx on file changes
 
-## 🛠️ Prerequisites
+Uses variables for flexibility and clean code
 
-1. **Linux control node** (like Ubuntu EC2) with Python 3 and `pip`
-2. SSH access to the **target machine**
-3. Git installed
-4. Python + Ansible installed (see below)
+🛠️ Prerequisites
+A Linux control node (e.g., Ubuntu EC2) with Python 3 and pip installed
 
----
+SSH access to the target machine
 
-## 📦 Install Ansible
+Git installed
 
-### 🐍 For Ubuntu/Debian:
-```bash
+Ansible installed
+
+📦 Install Ansible (Ubuntu/Debian)
 sudo apt update
 sudo apt install -y python3-pip
 pip3 install ansible
 
-🧪 Verify Installation:
-
+To verify Ansible installation:
 ansible --version
 
 🗂️ How to Use This Project
+Clone the Repository
 
-🔹 1. Clone the Repository
 git clone https://github.com/Aniruddhakharve/ansible-nginx-role.git
 cd ansible-nginx-role
 
-🔹 2. Edit Your Inventory File
-inventory.ini
+Edit Your Inventory File
+
+Open the file named inventory.ini and add your server details:
 
 [web]
 <your_target_server_ip> ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa
 
-🔹 3. Run the Playbook
+Replace <your_target_server_ip> with your actual server IP.
+
+Run the Playbook
+
 ansible-playbook -i inventory.ini site.yml
+
+If your server requires sudo, you can also run:
+
+ansible-playbook -i inventory.ini site.yml --ask-become-pass
 
 📜 Role Details
 webserver/tasks/main.yml
+
 Installs Nginx
 
 Copies a custom HTML page
 
-Notifies handler to restart service if file changes
+Notifies handler to restart Nginx
 
 webserver/handlers/main.yml
-Restarts Nginx if notified
+
+Restarts Nginx when notified
 
 webserver/vars/main.yml
+Contains:
 nginx_web_root: /var/www/html
 
 webserver/files/index.html
-Your custom web content (HTML).
+Contains your custom HTML content served by Nginx.
 
 ✅ Output Example
-After running the playbook, visit:
+After running the playbook, open your browser and visit:
 http://<your_target_server_ip>
-You’ll see your custom web page:
+
+You should see the custom message:
 "🚀 Nginx Configured by Ansible Role"
 
 🧠 Skills Showcased
-- Role-based Ansible design
-- Use of handlers, vars, and defaults
-- Modular and reusable infrastructure code
-- Real-world provisioning and automation
+Role-based Ansible automation
+
+Use of handlers, vars, defaults, and files
+
+Clean, reusable infrastructure code
+
+Real-world provisioning with Ansible Galaxy structure
 
 🧑‍💻 Author
 Aniruddha Kharve
-🛠️ MCA Graduate | Linux & DevOps Enthusiast
-🔗 GitHub: @Aniruddhakharve
-
+MCA Graduate | Linux & DevOps Enthusiast
+GitHub: https://github.com/Aniruddhakharve
 
 ⭐ Show Your Support
-If you found this helpful, leave a ⭐ on the repo and share with fellow DevOps learners!
-
+If you found this helpful, please ⭐ star the repo and share it with your fellow DevOps learners!
 
