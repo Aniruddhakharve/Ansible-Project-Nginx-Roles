@@ -1,0 +1,21 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: true
+  notify: restart nginx
+
+- name: Copy custom index.html
+  copy:
+    src: index.html
+    dest: "{{ nginx_web_root }}/index.html"
+    mode: '0644'
+  notify: restart nginx
+
+- name: Ensure Nginx is running and enabled
+  service:
+    name: nginx
+    state: started
+    enabled: true
+

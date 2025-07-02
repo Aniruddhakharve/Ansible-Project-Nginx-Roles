@@ -1,0 +1,7 @@
+---
+- name: Configure Nginx Web Server using Role
+  hosts: all
+  become: true
+  roles:
+    - webserver
+
